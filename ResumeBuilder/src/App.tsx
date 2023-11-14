@@ -146,7 +146,7 @@ function Experience() {
   const [experience, setExperience] = useState({
     name: 'GarbageTownUSA',
     title: 'King',
-    responsibilities: 'commanding the peasants to clean to garbage.',
+    responsibilities: 'commanding the peasants to clean the garbage.',
     date: '10/1/2069-01/01/2099',
   });
 

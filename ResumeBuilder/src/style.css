@@ -14,3 +14,16 @@ h1 {
   font-weight: 800;
   font-size: 1.5rem;
 }
+
+.personName {
+  text-align: center;
+}
+
+.personStuff {
+  text-align: center;
+}
+
+.responsibilities input {
+  width: 100%; 
+/* I don't really care to size this correctly RIGHT now, but I really need to come back to this.*/
+}

@@ -9,10 +9,11 @@ export const App: FC<{ name: string }> = ({ name }) => {
   const [numExperiences, setNumExperiences] = useState(1);
 
   const addExperience = () => {
+    //logic for adding another work experience.
     setNumExperiences(numExperiences + 1);
   };
 
-  const experiences = [];
+  const experiences = []; //this holds all the experiences/workex experience.
   for (let i = 0; i < numExperiences; i++) {
     experiences.push(<Experience key={i} />);
   }
@@ -21,6 +22,8 @@ export const App: FC<{ name: string }> = ({ name }) => {
     <div>
       <Person />
       <Education />
+      <h1> Experience</h1>
+      <hr />
       {experiences}
       <button onClick={addExperience}>more jobs</button>
     </div>
@@ -46,16 +49,16 @@ function Person() {
 
   return (
     <>
-      <h1>
+      <h1 className="personName">
         {person.fName} {person.lName}
       </h1>
-      <h1>
+      <h2 className="personStuff">
         {person.email} {person.phone}
-      </h1>
-
+      </h2>
+      <hr />
       {inputVisibility && (
         <>
-          <CustomInput
+          <CustomInput //creating input fields to ad personal info to the above header elemen
             label="First Name"
             value={person.fName}
             onChange={(value) => handleFieldChange('fName', value)}
@@ -79,7 +82,9 @@ function Person() {
       )}
 
       <button onClick={toggleInputVisibility}>
-        {inputVisibility ? 'Hide Inputs' : 'Show Inputs'}
+        {' '}
+        {/*This creates a button that hides the input fields and changes the button to a + */}
+        {inputVisibility ? 'Hide Inputs' : '+'}
       </button>
     </>
   );
@@ -103,14 +108,15 @@ function Education() {
 
   return (
     <>
-      <h1>School</h1>
+      <h1>Education</h1>
+      <hr />
       <h1>{education.name}</h1>
       <h2>{education.title}</h2>
       <h4>{education.date}</h4>
 
       {inputVisibility && (
         <>
-          <CustomInput
+          <CustomInput //creating input fields to ad education to the above header elements
             label="School Name"
             value={education.name}
             onChange={(value) => handleFieldChange('name', value)}
@@ -128,7 +134,9 @@ function Education() {
         </>
       )}
       <button onClick={toggleInputVisibility}>
-        {inputVisibility ? 'Hide Inputs' : 'Show Inputs'}
+        {' '}
+        {/*This creates a button that hides the input fields and changes the button to a + */}
+        {inputVisibility ? 'Hide Inputs' : '+'}
       </button>
     </>
   );
@@ -153,15 +161,14 @@ function Experience() {
 
   return (
     <>
-      <h1> Experience</h1>
       <h1>{experience.name}</h1>
       <h1>{experience.title}</h1>
       <h4>{experience.date}</h4>
       <p>{experience.responsibilities}</p>
       {inputVisibility && (
         <>
-          <CustomInput
-            label="Position title"
+          <CustomInput //adding input fields for the current position.
+            label="Company Name"
             value={experience.name}
             onChange={(value) => handleFieldChange('name', value)}
           />
@@ -171,26 +178,28 @@ function Experience() {
             onChange={(value) => handleFieldChange('title', value)}
           />
           <CustomInput
-            label="Position title"
+            label="Date Employed"
             value={experience.date}
             onChange={(value) => handleFieldChange('date', value)}
           />
-          <CustomInput
-            label="Position title"
-            value={experience.responsibilities}
-            onChange={(value) => handleFieldChange('responsibilities', value)}
-          />
+          <div
+            className="responsibilities" // Adding the class name here
+          >
+            <CustomInput
+              label="Responsibilities"
+              value={experience.responsibilities}
+              onChange={(value) => handleFieldChange('responsibilities', value)}
+            />
+          </div>
         </>
       )}
       <button onClick={toggleInputVisibility}>
-        {inputVisibility ? 'Hide Inputs' : 'Show Inputs'}
+        {' '}
+        {/*This creates a button that hides the input fields and changes the button to a + */}
+        {inputVisibility ? 'Hide Inputs' : '+'}
       </button>
     </>
   );
-}
-
-function ButtonExperience() {
-  return <Experience />;
 }
 
 function CustomInput({ label, value, onChange }) {
